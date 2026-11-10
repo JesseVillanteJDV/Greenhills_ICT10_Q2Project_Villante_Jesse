@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <title>Dark Mango Psychology Club Checker</title>
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --bg-color: #121214;
+            --card-bg: #1e1e24;
+            --input-bg: #2a2a32;
+            --primary-mango: #ff8c00;
+            --mango-hover: #ffa500;
+            --mango-glow: rgba(255, 140, 0, 0.35);
+            --text-main: #f0f0f5;
+            --text-muted: #a0a0b0;
+            --border-color: #383845;
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Container Card */
+        .container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Header Styling */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-mango);
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .header p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Form Controls */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        input[type="text"]::placeholder {
+            color: #656575;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary-mango);
+            box-shadow: 0 0 0 3px var(--mango-glow);
+        }
+
+        /* Button Styling */
+        input[type="button"] {
+            width: 100%;
+            padding: 0.9rem;
+            margin-top: 0.5rem;
+            background-color: var(--primary-mango);
+            color: #121214;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px var(--mango-glow);
+        }
+
+        input[type="button"]:hover {
+            background-color: var(--mango-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--mango-glow);
+        }
+
+        input[type="button"]:active {
+            transform: translateY(0);
+        }
+
+        /* Output Area */
+        #output {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: var(--input-bg);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary-mango);
+            font-size: 0.95rem;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            color: var(--text-main);
+            word-break: break-word;
+        }
+
+        /* Hide output when empty */
+        #output:empty {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Psychology Club</h1>
+            <p>Dark Mango Membership Checker</p>
+        </div>
+
+        <form onsubmit="return false;">
+            <div class="input-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" placeholder="e.g. Villante" required>
+            </div>
+
+            <div class="input-group">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" placeholder="e.g. Jesse" required>
+            </div>
+
+            <input type="button" py-click="student_club" value="Search Student">
+        </form>
+
+        <div id="outputseatwork"></div>
+    </div>
+
+    <py-script src="seatwork.py"></py-script>
+</body>
+</html>
